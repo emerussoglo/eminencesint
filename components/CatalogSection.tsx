@@ -414,7 +414,8 @@ export function CatalogSection({
                               </button>
                             </div>
                           </div>
-                        </div                      </article>
+                        </div>
+                      </article>
                     </RevealOnScroll>
                   );
                 })}
@@ -440,7 +441,8 @@ export function CatalogSection({
               className="catalog-custom-banner__btn"
             >
               {t.catalog.customOrderBtn}
-            </button          </div>
+            </button>
+          </div>
         </RevealOnScroll>
       </div>
     </section>
