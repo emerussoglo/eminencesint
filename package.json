@@ -1,0 +1,28 @@
+{
+  "name": "eminences-internationales",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev -p 3000 -H 0.0.0.0",
+    "build": "cross-env NODE_ENV=production next build && node --input-type=commonjs -e \"const fs=require('fs');fs.rmSync('dist',{recursive:true,force:true});fs.cpSync('out','dist',{recursive:true,force:true});\"",
+    "start": "serve dist -l 3000",
+    "clean": "node --input-type=commonjs -e \"const fs=require('fs');['.next','out','dist'].forEach(d=>fs.rmSync(d,{recursive:true,force:true}));\"",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "cross-env": "^10.1.0",
+    "lucide-react": "^0.546.0",
+    "motion": "^12.23.24",
+    "next": "^16.4.6",
+    "react": "^19.0.1",
+    "react-dom": "^19.0.1",
+    "serve": "^14.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "^7.0.2"
+  }
+}

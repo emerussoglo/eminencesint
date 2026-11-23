@@ -1,0 +1,8 @@
+{
+  "name": "Remix Remix Remix Éminences Internationales",
+  "description": "Importation, vente et location de véhicules chinois en Afrique : SUV, berlines, pick-up, utilitaires, camions, engins, pièces détachées et atelier certifié.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
