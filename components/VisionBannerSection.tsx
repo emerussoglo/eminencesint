@@ -1,4 +1,5 @@
 import { TranslationDictionary } from '../i18n/translations';
+import { RevealOnScroll } from './RevealOnScroll';
 
 interface VisionBannerSectionProps {
   t: TranslationDictionary;
@@ -34,21 +35,23 @@ export function VisionBannerSection({
         <rect width="100%" height="100%" fill="url(#eminences-hex-grid)" />
       </svg>
 
-      <div className="vision-inner">
-        <p className="vision-kicker">{t.visionBanner.kicker}</p>
+      <RevealOnScroll>
+        <div className="vision-inner">
+          <p className="vision-kicker">{t.visionBanner.kicker}</p>
 
-        <h2 className="vision-title">
-          {t.visionBanner.titleBefore}
-          <span className="vision-highlight">
-            {t.visionBanner.titleHighlight}
-          </span>{' '}
-          {t.visionBanner.titleAfter}
-        </h2>
+          <h2 className="vision-title">
+            {t.visionBanner.titleBefore}
+            <span className="vision-highlight">
+              {t.visionBanner.titleHighlight}
+            </span>{' '}
+            {t.visionBanner.titleAfter}
+          </h2>
 
-        <button type="button" onClick={onRequestQuote} className="vision-cta">
-          {t.visionBanner.cta}
-        </button>
-      </div>
+          <button type="button" onClick={onRequestQuote} className="vision-cta">
+            {t.visionBanner.cta}
+          </button>
+        </div>
+      </RevealOnScroll>
     </section>
   );
 }

@@ -6,6 +6,7 @@ import { SupportedLang } from '../config/company';
 import { TranslationDictionary } from '../i18n/translations';
 import { Vehicle } from '../types/vehicle';
 import { ResilientImage } from './ResilientImage';
+import { RevealOnScroll } from './RevealOnScroll';
 
 interface HeroSectionProps {
   vehicles: Vehicle[];
@@ -64,53 +65,57 @@ export function HeroSection({
       </div>
 
       <div className="container-wide hero__content">
-        <div className="hero__header">
-          <h1 className="hero__title">
-            {currentVehicle.brand} {currentVehicle.model}
-          </h1>
-          <p className="hero__tagline">
-            {currentVehicle.description[lang].split('.')[0]}.
-          </p>
-        </div>
-
-        <div className="hero__footer">
-          <div className="hero__cta-row">
-            <a
-              href={`/vehicules/${currentVehicle.slug}`}
-              className="hero__btn hero__btn--discover"
-            >
-              {t.hero.discoverBtn}
-            </a>
-            <button
-              type="button"
-              onClick={() =>
-                onRequestQuote(
-                  `${currentVehicle.brand} ${currentVehicle.model}`
-                )
-              }
-              className="hero__btn hero__btn--quote"
-            >
-              {t.hero.quoteBtn}
-            </button>
+        <RevealOnScroll>
+          <div className="hero__header">
+            <h1 className="hero__title">
+              {currentVehicle.brand} {currentVehicle.model}
+            </h1>
+            <p className="hero__tagline">
+              {currentVehicle.description[lang].split('.')[0]}.
+            </p>
           </div>
+        </RevealOnScroll>
 
-          <div
-            className="hero__dashes"
-            role="tablist"
-            aria-label={t.hero.dashAriaLabel}
-          >
-            {vehicles.map((v, idx) => (
+        <RevealOnScroll delay={150}>
+          <div className="hero__footer">
+            <div className="hero__cta-row">
+              <a
+                href={`/vehicules/${currentVehicle.slug}`}
+                className="hero__btn hero__btn--discover"
+              >
+                {t.hero.discoverBtn}
+              </a>
               <button
-                key={v.id}
                 type="button"
-                onClick={() => setSlideIndex(idx)}
-                aria-label={`${v.brand} ${v.model}`}
-                aria-selected={slideIndex === idx}
-                className={`hero__dash${slideIndex === idx ? ' is-active' : ''}`}
-              />
-            ))}
+                onClick={() =>
+                  onRequestQuote(
+                    `${currentVehicle.brand} ${currentVehicle.model}`
+                  )
+                }
+                className="hero__btn hero__btn--quote"
+              >
+                {t.hero.quoteBtn}
+              </button>
+            </div>
+
+            <div
+              className="hero__dashes"
+              role="tablist"
+              aria-label={t.hero.dashAriaLabel}
+            >
+              {vehicles.map((v, idx) => (
+                <button
+                  key={v.id}
+                  type="button"
+                  onClick={() => setSlideIndex(idx)}
+                  aria-label={`${v.brand} ${v.model}`}
+                  aria-selected={slideIndex === idx}
+                  className={`hero__dash${slideIndex === idx ? ' is-active' : ''}`}
+                />
+              ))}
+            </div>
           </div>
-        </div>
+        </RevealOnScroll>
       </div>
 
       <button

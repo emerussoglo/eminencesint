@@ -5,6 +5,7 @@ import { ArrowLeft, CheckCircle2, Clock } from 'lucide-react';
 import { companyConfig, InquiryType, SupportedLang } from '../config/company';
 import { TranslationDictionary } from '../i18n/translations';
 import { BreadcrumbBar } from './BreadcrumbBar';
+import { RevealOnScroll, RevealGroup } from './RevealOnScroll';
 
 interface ContactPageProps {
   lang: SupportedLang;
@@ -123,299 +124,333 @@ export function ContactPage({
   return (
     <section className="contact-section">
       <div className="container contact-container">
-        <BreadcrumbBar
-          homeLabel={t.breadcrumb.home}
-          currentLabel={t.nav.contact}
-          onBackHome={onBackHome}
-          breadcrumbAriaLabel={t.nav.contact}
-        />
+        <RevealOnScroll>
+          <BreadcrumbBar
+            homeLabel={t.breadcrumb.home}
+            currentLabel={t.nav.contact}
+            onBackHome={onBackHome}
+            breadcrumbAriaLabel={t.nav.contact}
+          />
+        </RevealOnScroll>
 
-        <button
-          type="button"
-          onClick={onBackHome}
-          className="contact-back-btn"
-        >
-          <ArrowLeft className="icon-sm" aria-hidden="true" />
-          <span>{t.contact.backHome}</span>
-        </button>
+        <RevealOnScroll delay={50}>
+          <button
+            type="button"
+            onClick={onBackHome}
+            className="contact-back-btn"
+          >
+            <ArrowLeft className="icon-sm" aria-hidden="true" />
+            <span>{t.contact.backHome}</span>
+          </button>
+        </RevealOnScroll>
 
-        <div className="contact-grid">
-          <div className="contact-col-info">
-            <p className="section-kicker section-kicker--accent">
-              {t.contact.kicker}
-            </p>
-            <h1 className="contact-title">{t.contact.title}</h1>
-            <p className="contact-subtitle">{t.contact.subtitle}</p>
+        <RevealOnScroll delay={100}>
+          <div className="contact-grid">
+            <div className="contact-col-info">
+              <p className="section-kicker section-kicker--accent">
+                {t.contact.kicker}
+              </p>
+              <h1 className="contact-title">{t.contact.title}</h1>
+              <p className="contact-subtitle">{t.contact.subtitle}</p>
 
-            <div className="info-pill-badge contact-sla-badge">
-              <Clock className="icon-sm" aria-hidden="true" />
-              <span>{t.contact.responseBadge}</span>
-            </div>
+              <div className="info-pill-badge contact-sla-badge">
+                <Clock className="icon-sm" aria-hidden="true" />
+                <span>{t.contact.responseBadge}</span>
+              </div>
 
-            <div className="contact-card">
-              <h2 className="contact-card__title">{t.contact.coordsTitle}</h2>
-              <dl className="contact-rows">
-                {contactRows.map((row) => (
-                  <div key={row.label} className="contact-row">
-                    <dt className="contact-row__label">{row.label}</dt>
-                    <dd className="contact-row__value">
-                      {row.value ? (
-                        row.href ? (
-                          <a href={row.href} className="contact-row__link">
-                            {row.value}
-                          </a>
-                        ) : (
-                          row.value
-                        )
-                      ) : (
-                        <span className="contact-row__placeholder">
-                          {t.contact.unconfirmedPlaceholder}
-                        </span>
-                      )}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          </div>
-
-          <div className="contact-col-form">
-            <div className="contact-card contact-card--form">
-              {submittedSubject ? (
-                <div className="contact-success">
-                  <CheckCircle2
-                    className="contact-success__icon"
-                    aria-hidden="true"
-                  />
-                  <h2 className="contact-success__title">
-                    {t.contact.successTitle}
-                  </h2>
-                  <p className="contact-success__body">
-                    {t.contact.successBody}
-                  </p>
-                  <p className="contact-success__subject">{submittedSubject}</p>
-                  <p className="contact-success__note">
-                    {t.contact.successNote}
-                  </p>
-                  <button
-                    type="button"
-                    onClick={() => setSubmittedSubject(null)}
-                    className="catalog-btn-dark"
-                  >
-                    {t.contact.newRequestBtn}
-                  </button>
+              <RevealOnScroll delay={150}>
+                <div className="contact-card">
+                  <h2 className="contact-card__title">{t.contact.coordsTitle}</h2>
+                  <dl className="contact-rows">
+                    <RevealGroup staggerDelay={60}>
+                      {contactRows.map((row) => (
+                        <RevealOnScroll key={row.label}>
+                          <div className="contact-row">
+                            <dt className="contact-row__label">{row.label}</dt>
+                            <dd className="contact-row__value">
+                              {row.value ? (
+                                row.href ? (
+                                  <a href={row.href} className="contact-row__link">
+                                    {row.value}
+                                  </a>
+                                ) : (
+                                  row.value
+                                )
+                              ) : (
+                                <span className="contact-row__placeholder">
+                                  {t.contact.unconfirmedPlaceholder}
+                                </span>
+                              )}
+                            </dd>
+                          </div>
+                        </RevealOnScroll>
+                      ))}
+                    </RevealGroup>
+                  </dl>
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="contact-form">
-                  <div className="contact-form__types-wrap">
-                    <h2 className="contact-form__title">
-                      {t.contact.formTitle}
-                    </h2>
-                    <div
-                      className="contact-form__types"
-                      role="group"
-                      aria-label={t.contact.requestTypeLabel}
-                    >
-                      {INQUIRY_TYPES.map((typeKey) => {
-                        const active = requestType === typeKey;
-                        return (
-                          <button
-                            key={typeKey}
-                            type="button"
-                            onClick={() => setRequestType(typeKey)}
-                            className={`contact-type-pill${
-                              active ? ' is-active' : ''
-                            }`}
+              </RevealOnScroll>
+            </div>
+
+            <div className="contact-col-form">
+              <RevealOnScroll delay={200}>
+                <div className="contact-card contact-card--form">
+                  {submittedSubject ? (
+                    <div className="contact-success">
+                      <CheckCircle2
+                        className="contact-success__icon"
+                        aria-hidden="true"
+                      />
+                      <h2 className="contact-success__title">
+                        {t.contact.successTitle}
+                      </h2>
+                      <p className="contact-success__body">
+                        {t.contact.successBody}
+                      </p>
+                      <p className="contact-success__subject">{submittedSubject}</p>
+                      <p className="contact-success__note">
+                        {t.contact.successNote}
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() => setSubmittedSubject(null)}
+                        className="catalog-btn-dark"
+                      >
+                        {t.contact.newRequestBtn}
+                      </button>
+                    </div>
+                  ) : (
+                    <form onSubmit={handleSubmit} className="contact-form">
+                      <RevealOnScroll delay={100}>
+                        <div className="contact-form__types-wrap">
+                          <h2 className="contact-form__title">
+                            {t.contact.formTitle}
+                          </h2>
+                          <div
+                            className="contact-form__types"
+                            role="group"
+                            aria-label={t.contact.requestTypeLabel}
                           >
-                            {t.contact.types[typeKey]}
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
+                            {INQUIRY_TYPES.map((typeKey) => {
+                              const active = requestType === typeKey;
+                              return (
+                                <button
+                                  key={typeKey}
+                                  type="button"
+                                  onClick={() => setRequestType(typeKey)}
+                                  className={`contact-type-pill${
+                                    active ? ' is-active' : ''
+                                  }`}
+                                >
+                                  {t.contact.types[typeKey]}
+                                </button>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      </RevealOnScroll>
 
-                  <div className="contact-form__row-2">
-                    <div>
-                      <label htmlFor="contact-name" className="form-label">
-                        {t.contact.nameLabel} *
-                      </label>
-                      <input
-                        id="contact-name"
-                        type="text"
-                        required
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder={t.contact.namePlaceholder}
-                        className="form-input"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="contact-email" className="form-label">
-                        {t.contact.emailFieldLabel} *
-                      </label>
-                      <input
-                        id="contact-email"
-                        type="email"
-                        required
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder={t.contact.emailPlaceholder}
-                        className="form-input"
-                      />
-                    </div>
-                  </div>
+                      <RevealOnScroll delay={150}>
+                        <div className="contact-form__row-2">
+                          <div>
+                            <label htmlFor="contact-name" className="form-label">
+                              {t.contact.nameLabel} *
+                            </label>
+                            <input
+                              id="contact-name"
+                              type="text"
+                              required
+                              value={name}
+                              onChange={(e) => setName(e.target.value)}
+                              placeholder={t.contact.namePlaceholder}
+                              className="form-input"
+                            />
+                          </div>
+                          <div>
+                            <label htmlFor="contact-email" className="form-label">
+                              {t.contact.emailFieldLabel} *
+                            </label>
+                            <input
+                              id="contact-email"
+                              type="email"
+                              required
+                              value={email}
+                              onChange={(e) => setEmail(e.target.value)}
+                              placeholder={t.contact.emailPlaceholder}
+                              className="form-input"
+                            />
+                          </div>
+                        </div>
+                      </RevealOnScroll>
 
-                  <div className="contact-form__row-2">
-                    <div>
-                      <label htmlFor="contact-phone" className="form-label">
-                        {t.contact.phoneFieldLabel}
-                      </label>
-                      <input
-                        id="contact-phone"
-                        type="tel"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        placeholder={t.contact.phonePlaceholder}
-                        className="form-input"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="contact-vehicle" className="form-label">
-                        {t.contact.vehicleLabel}
-                      </label>
-                      <input
-                        id="contact-vehicle"
-                        type="text"
-                        value={vehicle}
-                        onChange={(e) => setVehicle(e.target.value)}
-                        placeholder={t.contact.vehiclePlaceholder}
-                        className="form-input"
-                      />
-                    </div>
-                  </div>
+                      <RevealOnScroll delay={200}>
+                        <div className="contact-form__row-2">
+                          <div>
+                            <label htmlFor="contact-phone" className="form-label">
+                              {t.contact.phoneFieldLabel}
+                            </label>
+                            <input
+                              id="contact-phone"
+                              type="tel"
+                              value={phone}
+                              onChange={(e) => setPhone(e.target.value)}
+                              placeholder={t.contact.phonePlaceholder}
+                              className="form-input"
+                            />
+                          </div>
+                          <div>
+                            <label htmlFor="contact-vehicle" className="form-label">
+                              {t.contact.vehicleLabel}
+                            </label>
+                            <input
+                              id="contact-vehicle"
+                              type="text"
+                              value={vehicle}
+                              onChange={(e) => setVehicle(e.target.value)}
+                              placeholder={t.contact.vehiclePlaceholder}
+                              className="form-input"
+                            />
+                          </div>
+                        </div>
+                      </RevealOnScroll>
 
-                  {requestType === 'import' && (
-                    <div className="contact-form__row-2">
-                      <div>
-                        <label
-                          htmlFor="contact-destination"
-                          className="form-label"
-                        >
-                          {t.contact.destinationLabel}
+                      {requestType === 'import' && (
+                        <RevealOnScroll delay={250}>
+                          <div className="contact-form__row-2">
+                            <div>
+                              <label
+                                htmlFor="contact-destination"
+                                className="form-label"
+                              >
+                                {t.contact.destinationLabel}
+                              </label>
+                              <input
+                                id="contact-destination"
+                                type="text"
+                                value={destination}
+                                onChange={(e) => setDestination(e.target.value)}
+                                placeholder={t.contact.destinationPlaceholder}
+                                className="form-input"
+                              />
+                            </div>
+                            <div>
+                              <label htmlFor="contact-budget" className="form-label">
+                                {t.contact.budgetLabel}
+                              </label>
+                              <input
+                                id="contact-budget"
+                                type="text"
+                                value={budget}
+                                onChange={(e) => setBudget(e.target.value)}
+                                placeholder={t.contact.budgetPlaceholder}
+                                className="form-input"
+                              />
+                            </div>
+                          </div>
+                        </RevealOnScroll>
+                      )}
+
+                      {requestType === 'rental' && (
+                        <RevealOnScroll delay={250}>
+                          <div>
+                            <label htmlFor="contact-dates" className="form-label">
+                              {t.contact.datesLabel}
+                            </label>
+                            <input
+                              id="contact-dates"
+                              type="text"
+                              value={rentalDates}
+                              onChange={(e) => setRentalDates(e.target.value)}
+                              placeholder={t.contact.datesPlaceholder}
+                              className="form-input"
+                            />
+                          </div>
+                        </RevealOnScroll>
+                      )}
+
+                      {requestType === 'parts' && (
+                        <RevealOnScroll delay={250}>
+                          <div>
+                            <label htmlFor="contact-part-ref" className="form-label">
+                              {t.contact.partRefLabel}
+                            </label>
+                            <input
+                              id="contact-part-ref"
+                              type="text"
+                              value={partRef}
+                              onChange={(e) => setPartRef(e.target.value)}
+                              placeholder={t.contact.partRefPlaceholder}
+                              className="form-input"
+                            />
+                          </div>
+                        </RevealOnScroll>
+                      )}
+
+                      {requestType === 'workshop' && (
+                        <RevealOnScroll delay={250}>
+                          <div>
+                            <label
+                              htmlFor="contact-workshop-srv"
+                              className="form-label"
+                            >
+                              {t.contact.serviceTypeLabel}
+                            </label>
+                            <select
+                              id="contact-workshop-srv"
+                              value={workshopService}
+                              onChange={(e) => setWorkshopService(e.target.value)}
+                              className="form-input"
+                            >
+                              {t.contact.serviceTypes.map((srv) => (
+                                <option key={srv} value={srv}>
+                                  {srv}
+                                </option>
+                              ))}
+                            </select>
+                          </div>
+                        </RevealOnScroll>
+                      )}
+
+                      <RevealOnScroll delay={300}>
+                        <div>
+                          <label htmlFor="contact-message" className="form-label">
+                            {t.contact.messageLabel}
+                          </label>
+                          <textarea
+                            id="contact-message"
+                            rows={4}
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
+                            placeholder={t.contact.messagePlaceholder}
+                            className="form-input"
+                          />
+                        </div>
+                      </RevealOnScroll>
+
+                      <RevealOnScroll delay={350}>
+                        <label className="form-consent">
+                          <input
+                            type="checkbox"
+                            required
+                            checked={consent}
+                            onChange={(e) => setConsent(e.target.checked)}
+                            className="form-consent__checkbox"
+                          />
+                          <span>{t.contact.consentText}</span>
                         </label>
-                        <input
-                          id="contact-destination"
-                          type="text"
-                          value={destination}
-                          onChange={(e) => setDestination(e.target.value)}
-                          placeholder={t.contact.destinationPlaceholder}
-                          className="form-input"
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="contact-budget" className="form-label">
-                          {t.contact.budgetLabel}
-                        </label>
-                        <input
-                          id="contact-budget"
-                          type="text"
-                          value={budget}
-                          onChange={(e) => setBudget(e.target.value)}
-                          placeholder={t.contact.budgetPlaceholder}
-                          className="form-input"
-                        />
-                      </div>
-                    </div>
+                      </RevealOnScroll>
+
+                      <RevealOnScroll delay={400}>
+                        <button type="submit" className="form-submit">
+                          {t.contact.submitBtn}
+                        </button>
+                      </RevealOnScroll>
+                    </form>
                   )}
-
-                  {requestType === 'rental' && (
-                    <div>
-                      <label htmlFor="contact-dates" className="form-label">
-                        {t.contact.datesLabel}
-                      </label>
-                      <input
-                        id="contact-dates"
-                        type="text"
-                        value={rentalDates}
-                        onChange={(e) => setRentalDates(e.target.value)}
-                        placeholder={t.contact.datesPlaceholder}
-                        className="form-input"
-                      />
-                    </div>
-                  )}
-
-                  {requestType === 'parts' && (
-                    <div>
-                      <label htmlFor="contact-part-ref" className="form-label">
-                        {t.contact.partRefLabel}
-                      </label>
-                      <input
-                        id="contact-part-ref"
-                        type="text"
-                        value={partRef}
-                        onChange={(e) => setPartRef(e.target.value)}
-                        placeholder={t.contact.partRefPlaceholder}
-                        className="form-input"
-                      />
-                    </div>
-                  )}
-
-                  {requestType === 'workshop' && (
-                    <div>
-                      <label
-                        htmlFor="contact-workshop-srv"
-                        className="form-label"
-                      >
-                        {t.contact.serviceTypeLabel}
-                      </label>
-                      <select
-                        id="contact-workshop-srv"
-                        value={workshopService}
-                        onChange={(e) => setWorkshopService(e.target.value)}
-                        className="form-input"
-                      >
-                        {t.contact.serviceTypes.map((srv) => (
-                          <option key={srv} value={srv}>
-                            {srv}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  )}
-
-                  <div>
-                    <label htmlFor="contact-message" className="form-label">
-                      {t.contact.messageLabel}
-                    </label>
-                    <textarea
-                      id="contact-message"
-                      rows={4}
-                      value={message}
-                      onChange={(e) => setMessage(e.target.value)}
-                      placeholder={t.contact.messagePlaceholder}
-                      className="form-input"
-                    />
-                  </div>
-
-                  <label className="form-consent">
-                    <input
-                      type="checkbox"
-                      required
-                      checked={consent}
-                      onChange={(e) => setConsent(e.target.checked)}
-                      className="form-consent__checkbox"
-                    />
-                    <span>{t.contact.consentText}</span>
-                  </label>
-
-                  <button type="submit" className="form-submit">
-                    {t.contact.submitBtn}
-                  </button>
-                </form>
-              )}
+                </div>
+              </RevealOnScroll>
             </div>
           </div>
-        </div>
+        </RevealOnScroll>
       </div>
     </section>
   );

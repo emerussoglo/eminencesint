@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { BrandLogoItem, CHINESE_BRAND_LOGOS } from '../data/content';
 import { TranslationDictionary } from '../i18n/translations';
+import { RevealOnScroll } from './RevealOnScroll';
 
 interface BrandsScopeSectionProps {
   t: TranslationDictionary;
@@ -35,29 +36,33 @@ export function BrandsScopeSection({ t }: BrandsScopeSectionProps) {
   return (
     <section className="brands-section">
       <div className="container">
-        <div className="brands-header">
-          <p className="section-kicker section-kicker--violet">
-            {t.brands.kicker}
-          </p>
-          <h2 className="brands-title">{t.brands.title}</h2>
-          <p className="brands-disclaimer">{t.brands.disclaimer}</p>
-        </div>
+        <RevealOnScroll>
+          <div className="brands-header">
+            <p className="section-kicker section-kicker--violet">
+              {t.brands.kicker}
+            </p>
+            <h2 className="brands-title">{t.brands.title}</h2>
+            <p className="brands-disclaimer">{t.brands.disclaimer}</p>
+          </div>
+        </RevealOnScroll>
       </div>
 
-      <div className="brands-marquee-viewport">
-        <div className="brands-marquee-track">
-          <div className="brands-marquee-group">
-            {CHINESE_BRAND_LOGOS.map((brand) => (
-              <BrandLogoCard key={`a-${brand.id}`} brand={brand} />
-            ))}
-          </div>
-          <div className="brands-marquee-group" aria-hidden="true">
-            {CHINESE_BRAND_LOGOS.map((brand) => (
-              <BrandLogoCard key={`b-${brand.id}`} brand={brand} />
-            ))}
+      <RevealOnScroll delay={100}>
+        <div className="brands-marquee-viewport">
+          <div className="brands-marquee-track">
+            <div className="brands-marquee-group">
+              {CHINESE_BRAND_LOGOS.map((brand) => (
+                <BrandLogoCard key={`a-${brand.id}`} brand={brand} />
+              ))}
+            </div>
+            <div className="brands-marquee-group" aria-hidden="true">
+              {CHINESE_BRAND_LOGOS.map((brand) => (
+                <BrandLogoCard key={`b-${brand.id}`} brand={brand} />
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      </RevealOnScroll>
     </section>
   );
 }
