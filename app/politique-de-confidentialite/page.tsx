@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
-import { PrivacyPolicyPage } from '@/components/LegalPages/PrivacyPolicyPage';
-import { SiteProvider } from '@/components/SiteProvider';
+import { PrivacyPolicyPageClient } from './PrivacyPolicyPageClient';
 
 export const metadata: Metadata = {
   title: 'Politique de confidentialité — Éminences Internationales',
@@ -12,19 +11,12 @@ export const metadata: Metadata = {
   },
 };
 
+import { SiteProvider } from '@/components/SiteProvider';
+
 export default function PrivacyPolicyPageRoute() {
   return (
     <SiteProvider>
       <PrivacyPolicyPageClient />
     </SiteProvider>
   );
-}
-
-'use client';
-
-import { useSite } from '@/components/SiteProvider';
-
-function PrivacyPolicyPageClient() {
-  const { lang, t, navigateToRoute } = useSite();
-  return <PrivacyPolicyPage lang={lang} t={t} onBackHome={() => navigateToRoute('home')} />;
 }

@@ -318,9 +318,8 @@ export function CatalogSection({
               return (
                 <article key={vehicle.id} className="vehicle-card">
                   <div className="vehicle-card__media">
-                    <button
-                      type="button"
-                      onClick={() => onSelectVehicle(vehicle)}
+                    <a
+                      href={`/vehicules/${vehicle.slug}`}
                       className="vehicle-card__photo-btn"
                       aria-label={`${vehicle.brand} ${vehicle.model}`}
                     >
@@ -330,7 +329,7 @@ export function CatalogSection({
                         loading="lazy"
                         className="vehicle-card__img"
                       />
-                    </button>
+                    </a>
 
                     <span className="vehicle-card__badge">{statusLabel}</span>
 

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Minus, Plus, Facebook, Youtube, Tiktok, MapPin, Phone, MessageCircle, Mail, Clock } from 'lucide-react';
+import { Minus, Plus, Facebook, Youtube, Music, MapPin, Phone, MessageCircle, Mail, Clock } from 'lucide-react';
 import {
   AppRoute,
   companyConfig,
@@ -81,7 +81,7 @@ export function Footer({
     {
       name: t.social.tiktok,
       url: companyConfig.social.tiktok,
-      icon: Tiktok,
+      icon: Music,
       ariaLabel: 'TikTok',
     },
   ].filter((s) => s.url);

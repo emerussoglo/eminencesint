@@ -1,9 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { DEMO_VEHICLES } from '@/data/vehicles';
-import { companyConfig } from '@/config/company';
-import { VehicleDetailPage } from '@/components/VehicleDetailPage';
-import { SiteProvider } from '@/components/SiteProvider';
+import { VehicleDetailPageClient } from './VehicleDetailPageClient';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -42,6 +40,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
+import { SiteProvider } from '@/components/SiteProvider';
+
 export default async function VehicleDetailPageRoute({ params }: PageProps) {
   const resolvedParams = await params;
   const vehicle = DEMO_VEHICLES.find((v) => v.slug === resolvedParams.slug);
@@ -55,13 +55,4 @@ export default async function VehicleDetailPageRoute({ params }: PageProps) {
       <VehicleDetailPageClient vehicle={vehicle} />
     </SiteProvider>
   );
-}
-
-'use client';
-
-import { useSite } from '@/components/SiteProvider';
-
-function VehicleDetailPageClient({ vehicle }: { vehicle: typeof DEMO_VEHICLES[0] }) {
-  const { lang, t, navigateToRoute } = useSite();
-  return <VehicleDetailPage vehicle={vehicle} lang={lang} t={t} onBackHome={() => navigateToRoute('vehicles')} />;
 }

@@ -1,7 +1,5 @@
 import { Metadata } from 'next';
-import { companyConfig } from '@/config/company';
-import { LegalNoticePage } from '@/components/LegalPages/LegalNoticePage';
-import { SiteProvider } from '@/components/SiteProvider';
+import { LegalNoticePageClient } from './LegalNoticePageClient';
 
 export const metadata: Metadata = {
   title: 'Mentions légales — Éminences Internationales',
@@ -13,19 +11,12 @@ export const metadata: Metadata = {
   },
 };
 
+import { SiteProvider } from '@/components/SiteProvider';
+
 export default function LegalNoticePageRoute() {
   return (
     <SiteProvider>
       <LegalNoticePageClient />
     </SiteProvider>
   );
-}
-
-'use client';
-
-import { useSite } from '@/components/SiteProvider';
-
-function LegalNoticePageClient() {
-  const { lang, t, navigateToRoute } = useSite();
-  return <LegalNoticePage lang={lang} t={t} onBackHome={() => navigateToRoute('home')} />;
 }

@@ -9,6 +9,7 @@ interface ResilientImageProps {
   className?: string;
   fallbackTitle?: string;
   loading?: 'lazy' | 'eager';
+  priority?: boolean;
 }
 
 export function ResilientImage({
@@ -17,6 +18,7 @@ export function ResilientImage({
   className = '',
   fallbackTitle,
   loading = 'eager',
+  priority = false,
 }: ResilientImageProps) {
   const [failed, setFailed] = useState(false);
 
@@ -43,6 +45,7 @@ export function ResilientImage({
       referrerPolicy="no-referrer"
       onError={() => setFailed(true)}
       className={className}
+      fetchPriority={priority ? 'high' : undefined}
     />
   );
 }

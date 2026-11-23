@@ -253,12 +253,9 @@ export function Header({
                         key={vehicle.id}
                         className="mobile-drawer__model-card"
                       >
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setMobileOpen(false);
-                            onSelectVehicle(vehicle);
-                          }}
+                        <a
+                          href={`/vehicules/${vehicle.slug}`}
+                          onClick={() => setMobileOpen(false)}
                           className="mobile-drawer__model-thumb"
                         >
                           <ResilientImage
@@ -266,7 +263,7 @@ export function Header({
                             alt={`${vehicle.brand} ${vehicle.model}`}
                             className="mobile-drawer__model-img"
                           />
-                        </button>
+                        </a>
                         <p className="mobile-drawer__model-name">
                           {vehicle.brand} {vehicle.model}
                         </p>
@@ -284,16 +281,13 @@ export function Header({
                           >
                             {t.nav.drawerQuote}
                           </button>
-                          <button
-                            type="button"
-                            onClick={() => {
-                              setMobileOpen(false);
-                              onSelectVehicle(vehicle);
-                            }}
+                          <a
+                            href={`/vehicules/${vehicle.slug}`}
+                            onClick={() => setMobileOpen(false)}
                             className="mobile-drawer__model-link mobile-drawer__model-link--discover"
                           >
                             {t.nav.drawerDiscover}
-                          </button>
+                          </a>
                         </div>
                       </div>
                     ))}
