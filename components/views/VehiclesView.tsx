@@ -13,7 +13,6 @@ export function VehiclesView() {
     t,
     navigateToRoute,
     openContactWith,
-    setSelectedVehicle,
     quickFilters,
     comparedIds,
     toggleCompare,
@@ -42,7 +41,6 @@ export function VehiclesView() {
         onToggleCompare={toggleCompare}
         onOpenComparator={openComparator}
         onClearCompare={clearCompare}
-        onSelectVehicle={setSelectedVehicle}
         onRequestQuote={(label) => openContactWith('quote', label)}
         onRequestCustomImport={() => openContactWith('import')}
       />

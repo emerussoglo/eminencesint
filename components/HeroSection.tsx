@@ -11,7 +11,6 @@ interface HeroSectionProps {
   vehicles: Vehicle[];
   lang: SupportedLang;
   t: TranslationDictionary;
-  onSelectVehicle: (vehicle: Vehicle) => void;
   onRequestQuote: (vehicleLabel: string) => void;
 }
 
@@ -19,7 +18,6 @@ export function HeroSection({
   vehicles,
   lang,
   t,
-  onSelectVehicle,
   onRequestQuote,
 }: HeroSectionProps) {
   const [slideIndex, setSlideIndex] = useState(0);
@@ -77,13 +75,12 @@ export function HeroSection({
 
         <div className="hero__footer">
           <div className="hero__cta-row">
-            <button
-              type="button"
-              onClick={() => onSelectVehicle(currentVehicle)}
+            <a
+              href={`/vehicules/${currentVehicle.slug}`}
               className="hero__btn hero__btn--discover"
             >
               {t.hero.discoverBtn}
-            </button>
+            </a>
             <button
               type="button"
               onClick={() =>

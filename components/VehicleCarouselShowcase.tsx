@@ -11,7 +11,6 @@ interface VehicleCarouselShowcaseProps {
   vehicles: Vehicle[];
   lang: SupportedLang;
   t: TranslationDictionary;
-  onSelectVehicle: (vehicle: Vehicle) => void;
   onRequestQuote: (vehicleLabel: string) => void;
 }
 
@@ -19,7 +18,6 @@ export function VehicleCarouselShowcase({
   vehicles,
   lang,
   t,
-  onSelectVehicle,
   onRequestQuote,
 }: VehicleCarouselShowcaseProps) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -138,13 +136,12 @@ export function VehicleCarouselShowcase({
         </div>
 
         <div className="showcase__actions">
-          <button
-            type="button"
-            onClick={() => onSelectVehicle(current)}
+          <a
+            href={`/vehicules/${current.slug}`}
             className="showcase__btn showcase__btn--outline"
           >
             {t.showcase.discoverBtn}
-          </button>
+          </a>
           <button
             type="button"
             onClick={() => onRequestQuote(`${current.brand} ${current.model}`)}

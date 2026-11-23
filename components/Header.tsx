@@ -30,7 +30,6 @@ interface HeaderProps {
   onChangeLang: (lang: SupportedLang) => void;
   onNavigateRoute: (route: AppRoute, inquiryType?: InquiryType) => void;
   onOpenContactPage: (inquiryType?: InquiryType, vehicleLabel?: string) => void;
-  onSelectVehicle: (vehicle: Vehicle) => void;
 }
 
 export function Header({
@@ -41,7 +40,6 @@ export function Header({
   onChangeLang,
   onNavigateRoute,
   onOpenContactPage,
-  onSelectVehicle,
 }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);

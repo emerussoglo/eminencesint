@@ -7,7 +7,10 @@ export type AppRoute =
   | 'rental'
   | 'services-workshop'
   | 'about'
-  | 'contact';
+  | 'contact'
+  | 'legal'
+  | 'privacy'
+  | 'terms';
 
 export const ROUTE_TO_PATH: Record<AppRoute, string> = {
   home: '/',
@@ -17,6 +20,9 @@ export const ROUTE_TO_PATH: Record<AppRoute, string> = {
   'services-workshop': '/services-atelier',
   about: '/a-propos',
   contact: '/contact',
+  legal: '/mentions-legales',
+  privacy: '/politique-de-confidentialite',
+  terms: '/conditions-generales',
 };
 
 export const PATH_TO_ROUTE: Record<string, AppRoute> = {
@@ -27,6 +33,9 @@ export const PATH_TO_ROUTE: Record<string, AppRoute> = {
   '/services-atelier': 'services-workshop',
   '/a-propos': 'about',
   '/contact': 'contact',
+  '/mentions-legales': 'legal',
+  '/politique-de-confidentialite': 'privacy',
+  '/conditions-generales': 'terms',
 };
 
 export type InquiryType =
@@ -56,7 +65,6 @@ export interface CompanyConfig {
     alt: string;
   };
   contact: {
-    // À renseigner une fois les coordonnées officielles confirmées
     address: string | null;
     cityCountry: string | null;
     phone: string | null;
@@ -72,6 +80,7 @@ export interface CompanyConfig {
     instagram: string | null;
     facebook: string | null;
     youtube: string | null;
+    tiktok: string | null;
   };
   siteUrl: string;
   languages: {
@@ -119,15 +128,15 @@ export interface CompanyConfig {
 
 export const companyConfig: CompanyConfig = {
   name: 'Éminences Internationales',
-  legalName: null, // À renseigner : raison sociale complète, forme juridique, RCCM / SIRET
+  legalName: 'Éminences Internationales',
   sector: 'Automobile',
   specialization: 'Véhicules automobiles chinois exclusivement',
   slogan: {
-    fr: null, // À renseigner si un slogan officiel est défini
+    fr: null,
     en: null,
   },
   description: {
-    fr: 'Plateforme automobile internationale spécialisée exclusivement dans la vente, l’import-export, la location, les pièces et l’entretien de véhicules chinois.',
+    fr: 'Plateforme automobile internationale spécialisée exclusivement dans la vente, l\'import-export, la location, les pièces et l\'entretien de véhicules chinois.',
     en: 'International automotive platform specialized exclusively in sales, import-export, rental, parts, and maintenance for Chinese vehicles.',
   },
   logo: {
@@ -135,23 +144,24 @@ export const companyConfig: CompanyConfig = {
     alt: 'Éminences Internationales',
   },
   contact: {
-    address: null, // À renseigner : adresse du siège ou showroom
-    cityCountry: null, // À renseigner : ville et pays
-    phone: null, // À renseigner : numéro de téléphone officiel
-    whatsapp: null, // À renseigner : numéro WhatsApp Business au format international
-    email: null, // À renseigner : adresse e-mail officielle
+    address: 'Calavi',
+    cityCountry: 'Bénin',
+    phone: '+229 01 49 95 95 49',
+    whatsapp: '+229 01 49 95 95 49',
+    email: 'eminencesinternationales@gmail.com',
     hours: {
-      fr: null, // À renseigner : horaires d'ouverture
-      en: null,
+      fr: '24h/24, du lundi au samedi',
+      en: '24/7, Monday to Saturday',
     },
   },
   social: {
-    linkedin: null, // À renseigner
-    instagram: null, // À renseigner
-    facebook: null, // À renseigner
-    youtube: null, // À renseigner
+    linkedin: null,
+    instagram: null,
+    facebook: 'https://www.facebook.com/EminencesInternationales',
+    youtube: 'https://www.youtube.com/@EminencesInternationales',
+    tiktok: 'https://www.tiktok.com/@EminencesInternationales',
   },
-  siteUrl: '', // À renseigner : URL finale du site en production
+  siteUrl: '',
   languages: {
     default: 'fr',
     supported: ['fr', 'en'],
@@ -160,7 +170,7 @@ export const companyConfig: CompanyConfig = {
     fr: {
       title: 'Éminences Internationales — Vente, Import-Export & Services Véhicules Chinois',
       description:
-        'Éminences Internationales : spécialiste des véhicules automobiles chinois neufs et d’occasion, import-export depuis la Chine, location, pièces d’origine et atelier dédié.',
+        'Éminences Internationales : spécialiste des véhicules automobiles chinois neufs et d\'occasion, import-export depuis la Chine, location, pièces d\'origine et atelier dédié.',
       ogTitle: 'Éminences Internationales — Spécialiste Véhicules Automobiles Chinois',
       ogDescription:
         'Catalogue de véhicules chinois, import-export, location, pièces détachées, atelier dédié et demandes de devis.',

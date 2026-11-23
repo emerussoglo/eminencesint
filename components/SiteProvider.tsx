@@ -21,7 +21,6 @@ import { Header } from './Header';
 import { LegalModal } from './LegalModal';
 import { QuickSearchFilters } from './QuickSearchBar';
 import { VehicleComparatorModal } from './VehicleComparatorModal';
-import { VehicleDetailModal } from './VehicleDetailModal';
 
 const LEGACY_HASH_TO_PATH: Record<string, string> = {
   '#/': '/',
@@ -40,8 +39,6 @@ interface SiteContextValue {
   activeRoute: AppRoute;
   navigateToRoute: (route: AppRoute, nextInquiryType?: InquiryType) => void;
   openContactWith: (nextInquiryType?: InquiryType, vehicleLabel?: string) => void;
-  selectedVehicle: Vehicle | null;
-  setSelectedVehicle: (vehicle: Vehicle | null) => void;
   prefilledVehicle: string;
   inquiryType: InquiryType;
   quickFilters: QuickSearchFilters | null;
@@ -67,7 +64,6 @@ export function SiteProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
 
   const [lang, setLang] = useState<SupportedLang>(companyConfig.languages.default);
-  const [selectedVehicle, setSelectedVehicle] = useState<Vehicle | null>(null);
   const [prefilledVehicle, setPrefilledVehicle] = useState<string>('');
   const [inquiryType, setInquiryType] = useState<InquiryType>('quote');
   const [activeLegalDoc, setActiveLegalDoc] = useState<LegalDocKey | null>(null);
@@ -165,8 +161,6 @@ export function SiteProvider({ children }: { children: ReactNode }) {
     activeRoute,
     navigateToRoute,
     openContactWith,
-    selectedVehicle,
-    setSelectedVehicle,
     prefilledVehicle,
     inquiryType,
     quickFilters,
@@ -188,7 +182,6 @@ export function SiteProvider({ children }: { children: ReactNode }) {
           onChangeLang={setLang}
           onNavigateRoute={navigateToRoute}
           onOpenContactPage={openContactWith}
-          onSelectVehicle={setSelectedVehicle}
         />
 
         {children}
@@ -198,15 +191,6 @@ export function SiteProvider({ children }: { children: ReactNode }) {
           t={t}
           onChangeLang={setLang}
           onNavigateRoute={navigateToRoute}
-          onOpenLegal={setActiveLegalDoc}
-        />
-
-        <VehicleDetailModal
-          vehicle={selectedVehicle}
-          lang={lang}
-          t={t}
-          onClose={() => setSelectedVehicle(null)}
-          onRequestQuote={(label) => openContactWith('quote', label)}
         />
 
         <VehicleComparatorModal

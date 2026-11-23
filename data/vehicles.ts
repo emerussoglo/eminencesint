@@ -9,6 +9,7 @@ import { Vehicle } from '../types/vehicle';
 export const DEMO_VEHICLES: Vehicle[] = [
   {
     id: 'zeekr-7x-demo',
+    slug: 'zeekr-7x',
     brand: 'Zeekr',
     model: '7X',
     version: 'Configuration illustrative',
@@ -78,6 +79,7 @@ export const DEMO_VEHICLES: Vehicle[] = [
   },
   {
     id: 'byd-seal-demo',
+    slug: 'byd-seal',
     brand: 'BYD',
     model: 'Seal',
     version: 'Configuration illustrative',
@@ -146,6 +148,7 @@ export const DEMO_VEHICLES: Vehicle[] = [
   },
   {
     id: 'chery-tiggo-demo',
+    slug: 'chery-tiggo-series',
     brand: 'Chery',
     model: 'Tiggo Series',
     version: 'Configuration illustrative',
@@ -214,6 +217,7 @@ export const DEMO_VEHICLES: Vehicle[] = [
   },
   {
     id: 'geely-monjaro-demo',
+    slug: 'geely-monjaro',
     brand: 'Geely',
     model: 'Monjaro',
     version: 'Occasion vérifiée (exemple)',
@@ -282,6 +286,7 @@ export const DEMO_VEHICLES: Vehicle[] = [
   },
   {
     id: 'nio-es-demo',
+    slug: 'nio-series-suv',
     brand: 'NIO',
     model: 'Series SUV',
     version: 'Configuration illustrative',
@@ -350,6 +355,7 @@ export const DEMO_VEHICLES: Vehicle[] = [
   },
   {
     id: 'gwm-pickup-demo',
+    slug: 'great-wall-motors-poer-4x4',
     brand: 'Great Wall Motors',
     model: 'Poer 4x4',
     version: 'Configuration illustrative',

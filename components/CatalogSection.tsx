@@ -22,7 +22,6 @@ interface CatalogSectionProps {
   onToggleCompare: (id: string) => void;
   onOpenComparator: () => void;
   onClearCompare: () => void;
-  onSelectVehicle: (vehicle: Vehicle) => void;
   onRequestQuote: (vehicleLabel: string) => void;
   onRequestCustomImport: () => void;
 }
@@ -36,7 +35,6 @@ export function CatalogSection({
   onToggleCompare,
   onOpenComparator,
   onClearCompare,
-  onSelectVehicle,
   onRequestQuote,
   onRequestCustomImport,
 }: CatalogSectionProps) {
@@ -388,13 +386,12 @@ export function CatalogSection({
                       </div>
 
                       <div className="vehicle-card__actions">
-                        <button
-                          type="button"
-                          onClick={() => onSelectVehicle(vehicle)}
+                        <a
+                          href={`/vehicules/${vehicle.slug}`}
                           className="vehicle-card__btn vehicle-card__btn--outline"
                         >
                           {t.catalog.viewSheet}
-                        </button>
+                        </a>
                         <button
                           type="button"
                           onClick={() =>

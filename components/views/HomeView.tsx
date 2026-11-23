@@ -20,7 +20,6 @@ export function HomeView() {
     t,
     navigateToRoute,
     openContactWith,
-    setSelectedVehicle,
     quickFilters,
     comparedIds,
     toggleCompare,
@@ -35,7 +34,6 @@ export function HomeView() {
         vehicles={DEMO_VEHICLES}
         lang={lang}
         t={t}
-        onSelectVehicle={setSelectedVehicle}
         onRequestQuote={(label) => openContactWith('quote', label)}
       />
 
@@ -44,7 +42,6 @@ export function HomeView() {
         vehicles={DEMO_VEHICLES}
         lang={lang}
         t={t}
-        onSelectVehicle={setSelectedVehicle}
         onRequestQuote={(label) => openContactWith('quote', label)}
       />
 
@@ -96,7 +93,6 @@ export function HomeView() {
         onToggleCompare={toggleCompare}
         onOpenComparator={openComparator}
         onClearCompare={clearCompare}
-        onSelectVehicle={setSelectedVehicle}
         onRequestQuote={(label) => openContactWith('quote', label)}
         onRequestCustomImport={() => openContactWith('import')}
       />

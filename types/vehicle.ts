@@ -40,6 +40,7 @@ export interface VehicleTechnicalSpec {
 
 export interface Vehicle {
   id: string;
+  slug: string;
   brand: string;
   model: string;
   version: string;
