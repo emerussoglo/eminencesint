@@ -47,7 +47,7 @@ export function BrandsScopeSection({ t }: BrandsScopeSectionProps) {
         </RevealOnScroll>
       </div>
 
-      <RevealOnScroll delay={100}>
+      <RevealOnScroll delay={100} inline>
         <div className="brands-marquee-viewport">
           <div className="brands-marquee-track">
             <div className="brands-marquee-group">

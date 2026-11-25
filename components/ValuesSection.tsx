@@ -56,7 +56,7 @@ export function ValuesSection({ lang, t, onAboutClick }: ValuesSectionProps) {
           <div ref={trackRef} className="values-track no-scrollbar">
             <RevealGroup staggerDelay={120}>
               {VALUE_CARDS.map((item) => (
-                <RevealOnScroll key={item.id}>
+                <RevealOnScroll key={item.id} inline>
                   <article className="value-card">
                     <div className="value-card__media">
                       <ResilientImage

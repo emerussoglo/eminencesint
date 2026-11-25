@@ -74,7 +74,7 @@ export function ServicesCarouselSection({
           <div ref={trackRef} className="services-track no-scrollbar">
             <RevealGroup staggerDelay={100}>
               {SERVICE_CARDS.map((item) => (
-                <RevealOnScroll key={item.id}>
+                <RevealOnScroll key={item.id} inline>
                   <article className="service-card">
                     <div>
                       <div className="service-card__media">

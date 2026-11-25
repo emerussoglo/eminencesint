@@ -53,7 +53,7 @@ export function AboutSection({ lang, t }: AboutSectionProps) {
             </div>
 
             <div className="about-col">
-              <RevealOnScroll delay={100}>
+              <RevealOnScroll delay={100} inline>
                 <div className="about-visual-wrap">
                   <ResilientImage
                     src="/images/suv_chinese_hybrid_road_1795363148576.jpg"

@@ -61,7 +61,7 @@ export function ImportExportTimelineSection({
             <div className="timeline-grid">
               <RevealGroup staggerDelay={150}>
                 {IMPORT_EXPORT_STEPS.map((step) => (
-                  <RevealOnScroll key={step.number} delay={step.number * 100}>
+                  <RevealOnScroll key={step.number} delay={step.number * 100} inline>
                     <div className="timeline-step">
                       <div className="timeline-step__badge">{step.number}</div>
                       <h3 className="timeline-step__title">{step.title[lang]}</h3>

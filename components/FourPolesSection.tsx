@@ -56,7 +56,7 @@ export function FourPolesSection({
               {ACTIVITY_POLES.map((pole, idx) => {
                 const Icon = POLE_ICONS[idx] || Car;
                 return (
-                  <RevealOnScroll key={pole.id} delay={idx * 120}>
+                  <RevealOnScroll key={pole.id} delay={idx * 120} inline>
                     <article className="pole-card">
                       <div>
                         <div className="pole-card__top">
@@ -108,7 +108,7 @@ export function FourPolesSection({
             <div className="metrics-grid">
               <RevealGroup staggerDelay={100}>
                 {KEY_METRICS.map((item) => (
-                  <RevealOnScroll key={item.id} delay={80}>
+                  <RevealOnScroll key={item.id} delay={80} inline>
                     <MetricCounter item={item} lang={lang} />
                   </RevealOnScroll>
                 ))}

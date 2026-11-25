@@ -297,6 +297,7 @@ export interface TranslationDictionary {
     toConfirm: string;
     companyDescription: string;
     socialTitle: string;
+    navAriaLabel: string;
   };
   legal: {
     legalNotice: {
@@ -711,6 +712,7 @@ export const TRANSLATIONS: Record<SupportedLang, TranslationDictionary> = {
       toConfirm: 'Coordonnées officielles à renseigner.',
       companyDescription: 'Spécialiste exclusif des véhicules automobiles chinois : vente, import-export, location, pièces et atelier.',
       socialTitle: 'Nos réseaux',
+      navAriaLabel: 'Navigation du pied de page',
     },
     legal: {
       legalNotice: {
@@ -1128,6 +1130,7 @@ export const TRANSLATIONS: Record<SupportedLang, TranslationDictionary> = {
       toConfirm: 'Official contact details to be completed.',
       companyDescription: 'Exclusive specialist in Chinese automotive vehicles: sales, import-export, rental, parts and workshop.',
       socialTitle: 'Our networks',
+      navAriaLabel: 'Footer navigation',
     },
     legal: {
       legalNotice: {

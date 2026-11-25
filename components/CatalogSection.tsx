@@ -327,7 +327,7 @@ export function CatalogSection({
                     ? vehicle.badge[lang]
                     : vehicle.condition;
                   return (
-                    <RevealOnScroll key={vehicle.id}>
+                    <RevealOnScroll key={vehicle.id} inline>
                       <article className="vehicle-card">
                         <div className="vehicle-card__media">
                           <a

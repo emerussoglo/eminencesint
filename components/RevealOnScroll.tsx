@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState, ReactNode } from 'react';
+import React, { useEffect, useRef, useState, ReactNode } from 'react';
 
 interface RevealOnScrollProps {
   children: ReactNode;
@@ -10,6 +10,8 @@ interface RevealOnScrollProps {
   rootMargin?: string;
   once?: boolean;
   triggerOnce?: boolean;
+  /** Use display: contents to avoid breaking CSS Grid/Flex layouts */
+  inline?: boolean;
 }
 
 export function RevealOnScroll({
@@ -20,6 +22,7 @@ export function RevealOnScroll({
   rootMargin = '0px 0px -50px 0px',
   once = true,
   triggerOnce = true,
+  inline = false,
 }: RevealOnScrollProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -65,7 +68,18 @@ export function RevealOnScroll({
     transform: isVisible ? 'translateY(0)' : 'translateY(24px)',
     transition: `opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)`,
     willChange: 'opacity, transform',
+    ...(inline ? { display: 'contents' as const } : {}),
   };
+
+  // When inline, we can't use a ref on a fragment, so we render a div with display: contents
+  // This preserves grid/flex layout while still allowing animation
+  if (inline) {
+    return (
+      <div ref={ref} className={className} style={baseStyles}>
+        {children}
+      </div>
+    );
+  }
 
   return (
     <div ref={ref} className={className} style={baseStyles}>
@@ -92,16 +106,18 @@ export function RevealGroup({
   const childArray = Array.isArray(children) ? children : [children];
 
   return (
-    <div className={className}>
+    <>
       {childArray.map((child, index) => {
         if (!React.isValidElement(child)) return child;
+        const childProps = child.props as { delay?: number; threshold?: number; rootMargin?: string; inline?: boolean };
         return React.cloneElement(child as React.ReactElement<any>, {
-          delay: (child.props.delay ?? 0) + index * staggerDelay,
+          delay: (childProps.delay ?? 0) + index * staggerDelay,
           threshold,
           rootMargin,
+          inline: true, // Use display: contents to preserve grid/flex layouts
         });
       })}
-    </div>
+    </>
   );
 }
 
@@ -166,6 +182,3 @@ export function useCounterAnimation(
 
   return { ref, count, isVisible };
 }
-
-// Need React for isValidElement
-import React from 'react';
