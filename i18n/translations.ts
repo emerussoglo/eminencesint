@@ -172,7 +172,17 @@ export interface TranslationDictionary {
     powertrainLabel: string;
     priceLabel: string;
     priceOnRequest: string;
+    priceNote: string;
     demoNotice: string;
+    descriptionTitle: string;
+    highlightWarrantyTitle: string;
+    highlightWarrantyDesc: string;
+    highlightDeliveryTitle: string;
+    highlightDeliveryDesc: string;
+    highlightServiceTitle: string;
+    highlightServiceDesc: string;
+    highlightInspectedTitle: string;
+    highlightInspectedDesc: string;
   };
   comparatorModal: {
     title: string;
@@ -573,7 +583,17 @@ export const TRANSLATIONS: Record<SupportedLang, TranslationDictionary> = {
       powertrainLabel: 'Motorisation',
       priceLabel: 'Tarification',
       priceOnRequest: 'Prix sur devis',
+      priceNote: 'Prix indicatif — confirmation sur devis.',
       demoNotice: 'Fiche illustrative — données commerciales et disponibilités confirmées sur devis.',
+      descriptionTitle: 'Description',
+      highlightWarrantyTitle: 'Garantie constructeur',
+      highlightWarrantyDesc: 'Couverte selon les termes du fabricant chinois.',
+      highlightDeliveryTitle: 'Livraison suivie',
+      highlightDeliveryDesc: 'Suivi de l\'expédition jusqu\'à la remise des clés.',
+      highlightServiceTitle: 'Service après-vente',
+      highlightServiceDesc: 'Pièces et atelier dédiés aux marques chinoises.',
+      highlightInspectedTitle: 'Contrôle rigoureux',
+      highlightInspectedDesc: 'Inspection visuelle et documentaire avant livraison.',
     },
     comparatorModal: {
       title: 'Comparateur de véhicules chinois',
@@ -991,7 +1011,17 @@ export const TRANSLATIONS: Record<SupportedLang, TranslationDictionary> = {
       powertrainLabel: 'Powertrain',
       priceLabel: 'Pricing',
       priceOnRequest: 'Price on request',
+      priceNote: 'Indicative price — confirmed on quote.',
       demoNotice: 'Illustrative entry — final commercial terms and availability confirmed upon quotation.',
+      descriptionTitle: 'Description',
+      highlightWarrantyTitle: 'Manufacturer warranty',
+      highlightWarrantyDesc: 'Covered per the Chinese manufacturer\'s terms.',
+      highlightDeliveryTitle: 'Tracked delivery',
+      highlightDeliveryDesc: 'Shipment tracking from departure to handover.',
+      highlightServiceTitle: 'After-sales service',
+      highlightServiceDesc: 'Dedicated parts and workshop for Chinese brands.',
+      highlightInspectedTitle: 'Rigorous inspection',
+      highlightInspectedDesc: 'Visual and documentary check before delivery.',
     },
     comparatorModal: {
       title: 'Chinese Vehicle Comparator',
