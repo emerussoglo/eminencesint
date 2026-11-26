@@ -1,22 +1,11 @@
-import { Metadata } from 'next';
-import { LegalNoticePageClient } from './LegalNoticePageClient';
+import type { Metadata } from 'next';
+import { LegalNoticeClient } from './LegalNoticeClient';
 
 export const metadata: Metadata = {
-  title: 'Mentions légales — Éminences Internationales',
-  description: 'Mentions légales d\'Éminences Internationales : éditeur, hébergement, propriété intellectuelle, données personnelles, cookies, responsabilité.',
-  openGraph: {
-    title: 'Mentions légales — Éminences Internationales',
-    description: 'Informations légales obligatoires : identité de l\'entreprise, directeur de publication, hébergeur, propriété intellectuelle, protection des données.',
-    type: 'website',
-  },
+  title: 'Mentions légales | Éminences Internationales',
+  description: 'Mentions légales d\'Éminences Internationales - Importateur de véhicules chinois en France',
 };
 
-import { SiteProvider } from '@/components/SiteProvider';
-
-export default function LegalNoticePageRoute() {
-  return (
-    <SiteProvider>
-      <LegalNoticePageClient />
-    </SiteProvider>
-  );
+export default function LegalNoticePage() {
+  return <LegalNoticeClient />;
 }

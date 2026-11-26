@@ -1,22 +1,11 @@
-import { Metadata } from 'next';
-import { TermsConditionsPageClient } from './TermsConditionsPageClient';
+import type { Metadata } from 'next';
+import { TermsConditionsClient } from './TermsConditionsClient';
 
 export const metadata: Metadata = {
-  title: 'Conditions générales — Éminences Internationales',
-  description: 'Conditions générales d\'Éminences Internationales : vente véhicules chinois, import-export, location, pièces, atelier, devis, paiement, garanties, réclamations, responsabilité, litiges.',
-  openGraph: {
-    title: 'Conditions générales — Éminences Internationales',
-    description: 'CGV complètes pour la vente de véhicules chinois, import-export sur commande, location, pièces détachées et prestations atelier.',
-    type: 'website',
-  },
+  title: 'Conditions générales | Éminences Internationales',
+  description: 'Conditions générales de vente et de prestation de services d\'Éminences Internationales',
 };
 
-import { SiteProvider } from '@/components/SiteProvider';
-
-export default function TermsConditionsPageRoute() {
-  return (
-    <SiteProvider>
-      <TermsConditionsPageClient />
-    </SiteProvider>
-  );
+export default function TermsConditionsPage() {
+  return <TermsConditionsClient />;
 }

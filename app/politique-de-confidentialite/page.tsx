@@ -1,22 +1,11 @@
-import { Metadata } from 'next';
-import { PrivacyPolicyPageClient } from './PrivacyPolicyPageClient';
+import type { Metadata } from 'next';
+import { PrivacyPolicyClient } from './PrivacyPolicyClient';
 
 export const metadata: Metadata = {
-  title: 'Politique de confidentialité — Éminences Internationales',
-  description: 'Politique de confidentialité d\'Éminences Internationales : collecte des données, finalités, base légale, destinataires, durée de conservation, droits des utilisateurs, cookies, contact DPO.',
-  openGraph: {
-    title: 'Politique de confidentialité — Éminences Internationales',
-    description: 'Comment nous collectons, utilisons et protégeons vos données personnelles via les formulaires de contact, devis, location, pièces et atelier.',
-    type: 'website',
-  },
+  title: 'Politique de confidentialité | Éminences Internationales',
+  description: 'Politique de confidentialité d\'Éminences Internationales - Protection de vos données personnelles',
 };
 
-import { SiteProvider } from '@/components/SiteProvider';
-
-export default function PrivacyPolicyPageRoute() {
-  return (
-    <SiteProvider>
-      <PrivacyPolicyPageClient />
-    </SiteProvider>
-  );
+export default function PrivacyPolicyPage() {
+  return <PrivacyPolicyClient />;
 }
