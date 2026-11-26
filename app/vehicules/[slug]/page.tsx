@@ -40,8 +40,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-import { SiteProvider } from '@/components/SiteProvider';
-
 export default async function VehicleDetailPageRoute({ params }: PageProps) {
   const resolvedParams = await params;
   const vehicle = DEMO_VEHICLES.find((v) => v.slug === resolvedParams.slug);
@@ -50,9 +48,5 @@ export default async function VehicleDetailPageRoute({ params }: PageProps) {
     notFound();
   }
 
-  return (
-    <SiteProvider>
-      <VehicleDetailPageClient vehicle={vehicle} />
-    </SiteProvider>
-  );
+  return <VehicleDetailPageClient vehicle={vehicle} />;
 }
